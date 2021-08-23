@@ -1,15 +1,17 @@
 fun main() {
 
     val banco = BancoDeNomes()
+    val nomesSalvos: Collection<String> = banco.nomes
+
     banco.salva("Alex")
+    println(nomesSalvos)
     println(banco.nomes)
 
 }
 
 class BancoDeNomes{
 
-
-    val nomes : Collection<String>  get() = dados
+    val nomes : Collection<String>  get() = dados.toList()
 
     fun salva(nome: String){
         dados.add(nome)
@@ -19,6 +21,7 @@ class BancoDeNomes{
         private val dados = mutableListOf<String>()
     }
 }
+
 fun testaColecao() {
     val nomes: Collection<String> = mutableListOf(
         "Alex",
