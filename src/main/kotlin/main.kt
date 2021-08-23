@@ -1,42 +1,26 @@
 fun main() {
 
-    val banco = BancoDeNomes()
-    val nomesSalvos: Collection<String> = banco.nomes
-
-    banco.salva("Alex")
-    println(nomesSalvos)
-    println(banco.nomes)
-
-}
-
-class BancoDeNomes{
-
-    val nomes : Collection<String>  get() = dados.toList()
-
-    fun salva(nome: String){
-        dados.add(nome)
-    }
-
-    companion object{
-        private val dados = mutableListOf<String>()
-    }
-}
-
-fun testaColecao() {
-    val nomes: Collection<String> = mutableListOf(
+    val assistiramCursoAndroid: List<String> = listOf(
         "Alex",
         "Fran",
         "Gui",
-        "Maria",
-        "Ana"
+        "Maria"
     )
 
-    println(nomes)
+    val assistiramCursoKoltin:List<String> = listOf(
+        "Alex",
+        "Paulo",
+        "Maria"
+    )
 
-    for (nome in nomes) {
-        println(nome)
-    }
+    val assistiramAmbos = mutableListOf<String>()
+    assistiramAmbos.addAll(assistiramCursoAndroid)
+    println(assistiramAmbos)
 
-    println("Tem o nome alex? ${nomes.contains("Alex")}")
-    println("Tamanho da colecao ${nomes.size}")
+    assistiramAmbos.addAll(assistiramCursoKoltin)
+    println(assistiramAmbos)
+    println(assistiramAmbos.distinct())
+
+
 }
+
