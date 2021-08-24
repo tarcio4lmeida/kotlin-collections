@@ -1,31 +1,19 @@
 fun main() {
-
-    val assistiramCursoAndroid: MutableSet<String> = mutableSetOf(
-        "Alex",
-        "Fran",
-        "Gui",
-        "Maria"
+    val pedidos = mapOf<Int,Double>(
+        Pair(1, 20.0),
+        Pair(2, 34.0),
+        3 to 50.0
     )
 
-    val assistiramCursoKoltin: MutableSet<String> = mutableSetOf(
-        "Alex",
-        "Paulo",
-        "Maria"
-    )
+    println(pedidos)
+    val pedido = pedidos[1]
+    pedido?.let {
+        println("pedido $it")
+    }
 
-    //val assistiramAmbos = assistiramCursoAndroid + assistiramCursoKoltin
-    val assistiramAmbos = mutableSetOf<String>()
-    assistiramAmbos.addAll(assistiramCursoAndroid)
-    assistiramAmbos.addAll(assistiramCursoKoltin)
-    println(assistiramAmbos)
-
-    println(assistiramCursoAndroid union assistiramCursoKoltin)
-    println(assistiramCursoAndroid subtract  assistiramCursoKoltin)
-    println(assistiramCursoAndroid intersect  assistiramCursoKoltin)
-
-    val assistiramList = assistiramAmbos.toMutableList()
-    assistiramList.add("Alex")
-    println(assistiramList.toSet())
-
+    for (pedido in pedidos){
+        println("pedido ${pedido.key} - valor ${pedido.value}")
+    }
 }
+
 
