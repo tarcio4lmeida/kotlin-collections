@@ -1,5 +1,5 @@
 fun main() {
-    val pedidos = mapOf<Int,Double>(
+    val pedidos = mutableMapOf<Int,Double>(
         Pair(1, 20.0),
         Pair(2, 34.0),
         3 to 50.0
@@ -11,9 +11,27 @@ fun main() {
         println("pedido $it")
     }
 
-    for (pedido in pedidos){
-        println("pedido ${pedido.key} - valor ${pedido.value}")
+    for (p in pedidos){
+        println("pedido ${p.key} - valor ${p.value}")
     }
+
+    pedidos[4] = 70.0
+    println(pedidos)
+
+    pedidos.put(5, 80.0)
+
+    pedidos.put(1, 200.0)
+    println(pedidos)
+
+    pedidos.putIfAbsent(1, 200.0)
+    println(pedidos)
+
+    pedidos.remove(1)
+    println(pedidos)
+
+    pedidos.remove(3, 70.0)
+    println(pedidos)
+
 }
 
 
