@@ -1,43 +1,32 @@
 fun main() {
-    val pedidos: MutableMap<Int, Double> = mutableMapOf<Int, Double>(
-        Pair(1, 20.0),
-        Pair(2, 64.0),
-        3 to 50.0,
-        4 to 100.0,
-        5 to 150.0
-
+    val pedidos = listOf<Pedido>(
+        Pedido(1, 20.0),
+        Pedido(2, 30.0),
+        Pedido(3, 40.0),
+        Pedido(4, 50.0),
+        Pedido(5, 60.0)
     )
 
-    val valorpedido = pedidos.getValue(4)
-    println(valorpedido)
-    println(pedidos.getOrElse(0) {
-        "Nao tem o pedido"
-    })
+    println(pedidos)
 
-    println(pedidos.getOrDefault(1, -1.0))
-    println(pedidos.getOrDefault(0, -1.0))
-
-    println(pedidos.keys)
-    println(pedidos.values)
-
-    for(numero in pedidos.keys){
-        println("pedidos $numero")
+    val pedidosMapeados = pedidos.associateBy { pedido ->
+        pedido.numero
     }
 
-  val pedidoFilter =   pedidos.filter {
-        (numero, valor) ->
-        numero % 2 == 0 && valor > 50.0
+    println(pedidosMapeados)
+    println(pedidosMapeados[1])
+
+    val pedidosFreteGratis: Map<Pedido, Boolean> = pedidos.associateWith { pedido ->
+        pedido.valor > 50.0
     }
 
-    println(pedidoFilter)
-
-    val pedidosAcima = pedidos.filterValues { valor ->
-        valor > 70.0
-    }
-
-    println(pedidosAcima)
+    println(pedidosFreteGratis)
+    println(pedidosFreteGratis[Pedido(numero=1, valor = 20.0)])
 
 }
 
 
-
+data class Pedido(
+    val numero: Int,
+    val valor: Double
+)
