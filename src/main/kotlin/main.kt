@@ -21,8 +21,35 @@ fun main() {
     }
 
     println(pedidosFreteGratis)
-    println(pedidosFreteGratis[Pedido(numero=1, valor = 20.0)])
+    println(pedidosFreteGratis[Pedido(numero=5, valor = 60.0)])
 
+    val mapa : Map<Boolean, Pedido> = pedidos.associateBy {
+        pedido -> pedido.valor > 50.0
+    }
+
+    val  pedidosFreteGratisAgrupados = pedidos.groupBy {  pedido: Pedido ->
+        pedido.valor > 50
+    }
+
+    println(pedidosFreteGratisAgrupados)
+    println(pedidosFreteGratisAgrupados[true])
+
+    val nomes = listOf<String>(
+        "Alex",
+        "Fran",
+        "Gui",
+        "Ana",
+        "Paulo",
+        "Maria",
+        "Gisele"
+    )
+
+    val agenda = nomes.groupBy { nome->
+        nome.first()
+    }
+
+    println(agenda)
+    println(agenda['A'])
 }
 
 
